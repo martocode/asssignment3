@@ -113,33 +113,24 @@ const App = () => {
 						style={{ width: 900 }}
 					>
 						<Input
-							value={currentVal}
+							// value={currentVal}
 							className="input currency"
 							addonBefore={selectBefore}
 							type="number"
 							onChange={(e) => {
 								const formatter = currFormat(selected);
-								setload(false);
 								const num = Number(e.target.value);
-								const formatted = formatter(num);
-								if (currentVal != num) {
-									setInputValue(formatter(num));
-									setCurrentVal(
-										`${formatter(
-											currentVal
-										)}${getInputValue}`
-									);
-								} else {
-									setCurrentVal(num);
-								}
-
+								// setload(false);
+								setInput(num);
 								changeNum(selected);
-								console.log(currentVal, "formatted");
+								// setload(true);
+								const formatted = formatter(num);
 							}}
 						/>
 						<Table
 							pagination={false}
 							rowClassName={(record, index) => {
+								// console.log(record);
 								if (child(selected) === index) {
 									return "row active";
 								}
