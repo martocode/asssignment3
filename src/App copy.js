@@ -1,13 +1,11 @@
-import "./App.css";
-import { useEffect, useRef, useState } from "react";
-import axios from "axios";
-
-import { Row, Col, Table, Space, Card, Typography, Select, Input } from "antd";
+import { Card, Col, Input, Row, Select, Space, Table, Typography } from "antd";
 import "antd/dist/antd.css";
+import axios from "axios";
+import { useEffect, useRef, useState } from "react";
+import "./App.css";
 import { convert, currFormat } from "./Libs/Currency";
-const { Option } = Select;
 
-const round = (amount) => Number(amount.toFixed(5));
+const { Option } = Select;
 
 const columns = [
 	{
@@ -16,24 +14,14 @@ const columns = [
 		fixed: "left",
 	},
 	{
-		title: (
-			<Typography.Text
-				className="title"
-				// style={{ ...titleSize, ...fontWidth }}
-			>
-				WE BUY
-			</Typography.Text>
-		),
+		title: <Typography.Text className="title">WE BUY</Typography.Text>,
 		dataIndex: "buy",
 		key: "buy",
 		fixed: "left",
 	},
 	{
 		title: (
-			<Typography.Text
-				className="title wrap"
-				// style={titleStyle}
-			>
+			<Typography.Text className="title wrap">
 				EXCHANGE RATE
 			</Typography.Text>
 		),
@@ -43,14 +31,7 @@ const columns = [
 		width: 20,
 	},
 	{
-		title: (
-			<Typography.Text
-				className="title"
-				// style={{ ...titleSize, ...fontWidth }}
-			>
-				WE SELL
-			</Typography.Text>
-		),
+		title: <Typography.Text className="title">WE SELL</Typography.Text>,
 		dataIndex: "sell",
 		key: "sell",
 	},
@@ -65,10 +46,14 @@ const App = () => {
 	const [getOpt, setOpt] = useState([]);
 	const [getBase, setBase] = useState([]);
 	const [getSelect, setSelect] = useState();
+	const [getInputValue, setInputValue] = useState();
 	const [inputOnchange, setInputOnchange] = useState(false);
+	const [currentVal, setCurrentVal] = useState(0);
 	const currencies = ["CAD", "IDR", "JPY", "CHF", "EUR", "USD"];
 	const selected = getSelect || "IDR";
-	const formatter = currFormat(selected);
+	const [rawData, setRawData] = useState([]);
+	const [selectedCurrency, setSelectedCurrency] = useState();
+
 	const child = (curr) => currencies.indexOf(curr);
 
 	const selectBefore = (
@@ -90,16 +75,9 @@ const App = () => {
 		</Select>
 	);
 
-	const changeSource = () => {
-		if (inputOnchange) {
-			return getData;
-		}
-	};
-
 	const changeNum = (select) => () => {
 		const currGenerator = convert(getRates, getBase, select);
 
-		console.log(getInput, "getInput");
 		const maps = currencies.map((v, k) => {
 			let converted = currGenerator(v, getInput);
 			return {
@@ -113,38 +91,39 @@ const App = () => {
 		return maps;
 	};
 
+	const onchangeInput = (e) => {
+		return e.target.value;
+	};
+
+	const onChangeSelect = (val) => {
+		const selectData = rawData.rates[val];
+		setSelectedCurrency();
+	};
+
 	useEffect(() => {
 		(async () => {
 			if (getRates !== []) {
-				console.log("test");
 				const result = await axios.get(
 					"https://api.exchangeratesapi.io/latest"
 				);
 				setRates(result?.data.rates);
 				setBase(result?.data.base);
 			}
-			/* else {
-				setload(false);
-			} */
-			// setInput(26000);
-			// const baseCurr = round(1 / getRates["IDR"]);
-
 			setData(changeNum(selected));
-			// setInputOnchange(true);
-			// changeSource();
-			/* setTabel(
-				<Table
-					style={{ whiteSpace: "pre" }}
-					dataSource={getData}
-					columns={columns}
-				/>
-			); */
-			// setInputOnchange(false);
 			setload(true);
 		})();
 	}, [load]);
 
-	// if (getData) {
+	useEffect(() => {
+		changeNum(selected)();
+		console.log("change input");
+	}, [getInput]);
+
+	useEffect(() => {
+		if (!rawData) {
+		}
+	}, [rawData]);
+
 	return (
 		<Row>
 			<Col lg={{ span: 12, offset: 2 }}>
@@ -155,28 +134,24 @@ const App = () => {
 						style={{ width: 900 }}
 					>
 						<Input
-							className="input"
+							// value={currentVal}
+							className="input currency"
 							addonBefore={selectBefore}
 							type="number"
 							onChange={(e) => {
-								new Promise((e) => e())
-									.then(() => {
-										setload(false);
-										console.log(e.target);
-										const num = Number(e.target.value);
-
-										setInput(formatter(num));
-									})
-									.then(() => changeNum(selected))
-									.then(setInputOnchange(false));
-								// .then(() => setTabel(getTabel));
+								const formatter = currFormat(selected);
+								const num = Number(e.target.value);
+								// setload(false);
+								setInput(e.target.value);
+								changeNum(selected);
+								// setload(true);
+								const formatted = formatter(num);
 							}}
-							// onPressEnter={}
 						/>
-						{/* {getTabel} */}
 						<Table
 							pagination={false}
 							rowClassName={(record, index) => {
+								// console.log(record);
 								if (child(selected) === index) {
 									return "row active";
 								}
@@ -191,10 +166,6 @@ const App = () => {
 			</Col>
 		</Row>
 	);
-	/* 	} else {
-		console.log("addd");
-		return <></>;
- 	}*/
 };
 
 export default App;
