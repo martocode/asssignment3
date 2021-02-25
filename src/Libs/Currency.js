@@ -4,7 +4,6 @@ export const convert = (getRates, base, select) => (to_currency, getInput) => {
 		getInput /= getRates[select];
 
 		if (to_currency !== base) {
-			console.log(getInput, " before", to_currency);
 			getInput *= getRates[to_currency];
 			notBase = false;
 		}
@@ -17,4 +16,10 @@ export const convert = (getRates, base, select) => (to_currency, getInput) => {
 
 		return getInput;
 	};
+};
+
+export const currFormat = (select) => (number) => {
+	return Intl.NumberFormat({ style: "currency", currency: select }).format(
+		number
+	);
 };
