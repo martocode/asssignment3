@@ -23,6 +23,10 @@
 	background: #f06d38 !important;
 }
 
+.row.active > td {
+	background-color: azure !important;
+}
+
 .App-logo {
 	height: 40vmin;
 	pointer-events: none;
