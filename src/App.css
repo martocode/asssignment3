@@ -27,6 +27,22 @@
 	background-color: azure !important;
 }
 
+.value,
+.input {
+	width: 50% !important;
+}
+
+.value {
+	background-color: white;
+	height: 32px;
+	/* color: rgb(0, 0, 0, 0.85); */
+	border-width: 1px;
+	border-radius: 0;
+	border: 1px solid #d9d9d9;
+	/* margin: 0;
+	padding: 4px 11px; */
+}
+
 .App-logo {
 	height: 40vmin;
 	pointer-events: none;

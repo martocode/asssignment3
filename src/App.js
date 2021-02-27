@@ -2,7 +2,17 @@ import "./App.css";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-import { Row, Col, Table, Space, Card, Typography, Select, Input } from "antd";
+import {
+	Row,
+	Col,
+	Table,
+	Space,
+	Card,
+	Typography,
+	Select,
+	Input,
+	InputNumber,
+} from "antd";
 import "antd/dist/antd.css";
 import { convert, currFormat } from "./Libs/Currency";
 const { Option } = Select;
@@ -57,15 +67,21 @@ const columns = [
 ];
 
 const App = () => {
+	/**
+	 * States
+	 */
 	const tableRef = useRef();
 	const [getData, setData] = useState([]);
 	const [getRates, setRates] = useState([]);
-	const [getInput, setInput] = useState(26000);
+	const [getInput, setInput] = useState();
 	const [load, setload] = useState();
 	const [getOpt, setOpt] = useState([]);
 	const [getBase, setBase] = useState([]);
 	const [getSelect, setSelect] = useState();
-	const [inputOnchange, setInputOnchange] = useState(false);
+
+	/**
+	 * vars
+	 */
 	const currencies = ["CAD", "IDR", "JPY", "CHF", "EUR", "USD"];
 	const selected = getSelect || "IDR";
 	const formatter = currFormat(selected);
@@ -90,18 +106,10 @@ const App = () => {
 		</Select>
 	);
 
-	const changeSource = () => {
-		if (inputOnchange) {
-			return getData;
-		}
-	};
-
-	const changeNum = (select) => () => {
-		const currGenerator = convert(getRates, getBase, select);
-
-		console.log(getInput, "getInput");
-		const maps = currencies.map((v, k) => {
+	const changeSource = (currGenerator) => {
+		return currencies.map((v, k) => {
 			let converted = currGenerator(v, getInput);
+			// console.log(converted);
 			return {
 				key: k + 1,
 				foreign: v,
@@ -110,39 +118,52 @@ const App = () => {
 				sell: converted(1),
 			};
 		});
-		return maps;
+	};
+
+	const onChangeInput = (e) => {
+		const num = Number(e.target.value);
+		// console.log(formatter);
+		// setInput(formatter(num));
+		setInput(num);
+	};
+
+	const changeNum = (select) => {
+		const currGenerator = convert(getRates, getBase, select);
+
+		// console.log(getInput, "getInput");
+
+		// console.log(maps, "maps");
+		return changeSource(currGenerator);
+	};
+
+	const onChangeValue = () => {
+		const currGenerator = convert(
+			getRates,
+			getBase,
+			selected
+		)(selected, getInput);
+		// console.log(convert(getRates, getBase, selected), "cccc");
+
+		return currGenerator();
+	};
+
+	const renderData = async () => {
+		const result = await axios.get(
+			"https://api.exchangeratesapi.io/latest"
+		);
+		setRates(result?.data.rates);
+		setBase(result?.data.base);
+		setData(changeNum(selected));
+		setload(true);
 	};
 
 	useEffect(() => {
-		(async () => {
-			if (getRates !== []) {
-				console.log("test");
-				const result = await axios.get(
-					"https://api.exchangeratesapi.io/latest"
-				);
-				setRates(result?.data.rates);
-				setBase(result?.data.base);
-			}
-			/* else {
-				setload(false);
-			} */
-			// setInput(26000);
-			// const baseCurr = round(1 / getRates["IDR"]);
+		renderData();
+	}, []);
 
-			setData(changeNum(selected));
-			// setInputOnchange(true);
-			// changeSource();
-			/* setTabel(
-				<Table
-					style={{ whiteSpace: "pre" }}
-					dataSource={getData}
-					columns={columns}
-				/>
-			); */
-			// setInputOnchange(false);
-			setload(true);
-		})();
-	}, [load]);
+	useEffect(() => {
+		setData(changeNum(selected));
+	}, [getInput, getSelect]);
 
 	// if (getData) {
 	return (
@@ -154,28 +175,40 @@ const App = () => {
 						title="Table Chart Stock"
 						style={{ width: 900 }}
 					>
-						<Input
-							className="input"
-							addonBefore={selectBefore}
-							type="number"
-							onChange={(e) => {
-								new Promise((e) => e())
-									.then(() => {
-										setload(false);
-										console.log(e.target);
-										const num = Number(e.target.value);
-
-										setInput(formatter(num));
-									})
-									.then(() => changeNum(selected))
-									.then(setInputOnchange(false));
-								// .then(() => setTabel(getTabel));
-							}}
-							// onPressEnter={}
-						/>
-						{/* {getTabel} */}
+						<Input.Group compact>
+							<Input
+								className="input"
+								addonBefore={selectBefore}
+								type="number"
+								onChange={onChangeInput}
+							/>
+							<Typography.Text className="value">
+								Hahaha
+								{(() => {
+									const curr = convert(
+										getRates,
+										getBase,
+										selected
+									)(selected, getInput);
+									console.log(
+										selected,
+										"selected",
+										curr(),
+										"curr(selected, getInput)"
+									);
+									return getRates[selected] || "";
+								})()}
+							</Typography.Text>
+							{/* <h1 className="value">
+								{(() => {
+									onChangeValue();
+									console.log(onChangeValue(), "acc");
+								})()}
+							</h1> */}
+						</Input.Group>
 						<Table
 							pagination={false}
+							className="inner table"
 							rowClassName={(record, index) => {
 								if (child(selected) === index) {
 									return "row active";
@@ -191,10 +224,6 @@ const App = () => {
 			</Col>
 		</Row>
 	);
-	/* 	} else {
-		console.log("addd");
-		return <></>;
- 	}*/
 };
 
 export default App;
