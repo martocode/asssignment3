@@ -1,0 +1,264 @@
+﻿
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="667" height="892" shape-rendering="optimizeSpeed">
+                
+            <g>
+                <rect x="50" y="80" width="139.2" height="30" rx="3" ry="3" style="fill:#81d4fa; stroke:#444; stroke-width:1"></rect>
+                
+                <line x1="189.2" y1="90" x2="194.2" y2="90" style="fill:#fff; stroke:#444; stroke-width:1"></line>
+                
+                <line x1="189.2" y1="100" x2="194.2" y2="100" style="fill:#fff; stroke:#444; stroke-width:1"></line>
+
+                <path d="M194.2, 81 L214.2, 95 L194.2, 109 Z" fill="#fff" stroke="#444" stroke-width="1"></path>
+                             
+                <title>export convert</title>
+            <text x="65" y="100" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="65" y="100">export convert</tspan>
+            </text>
+                
+            </g>
+            <g>
+                <rect x="87" y="128.5" width="338.59999999999997" height="30" style="fill:#a5d6a7; stroke:#444; stroke-width:1"></rect>
+                    
+                <line x1="97" y1="128.5" x2="97" y2="158.5" style="fill:#a5d6a7; stroke:#444; stroke-width:1"></line>
+                <line x1="415.59999999999997" y1="128.5" x2="415.59999999999997" y2="158.5" style="fill:#a5d6a7; stroke:#444; stroke-width:1"></line>
+             
+                <title>convert = (getRates, base, select) =&gt;</title>
+            <text x="112" y="148.5" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="112" y="148.5">convert = (getRates, base, select) =&gt;</tspan>
+            </text>
+                
+            </g>
+            <g>
+                <rect x="124" y="177" width="287.4" height="30" rx="3" ry="3" style="fill:#90caf9; stroke:#444; stroke-width:1"></rect>
+                
+                <line x1="411.4" y1="187" x2="416.4" y2="187" style="fill:#a5d6a7; stroke:#444; stroke-width:1"></line>
+                
+                <line x1="411.4" y1="197" x2="416.4" y2="197" style="fill:#a5d6a7; stroke:#444; stroke-width:1"></line>
+
+                <path d="M416.4, 181 L432.4, 192 L416.4, 203 Z" fill="#a5d6a7" stroke="#444" stroke-width="1"></path>
+                             
+                <title>return (to_currency, getInput) =&gt;</title>
+            <text x="139" y="197" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="139" y="197">return (to_currency, getInput) =&gt;</tspan>
+            </text>
+                
+            </g>
+            <g>
+                <rect x="161" y="225.5" width="131.39999999999998" height="30" rx="3" ry="3" style="fill:#90caf9; stroke:#444; stroke-width:1"></rect>
+                
+                <line x1="292.4" y1="235.5" x2="297.4" y2="235.5" style="fill:#a5d6a7; stroke:#444; stroke-width:1"></line>
+                
+                <line x1="292.4" y1="245.5" x2="297.4" y2="245.5" style="fill:#a5d6a7; stroke:#444; stroke-width:1"></line>
+
+                <path d="M297.4, 229.5 L313.4, 240.5 L297.4, 251.5 Z" fill="#a5d6a7" stroke="#444" stroke-width="1"></path>
+                             
+                <title>return (n) =&gt;</title>
+            <text x="176" y="245.5" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="176" y="245.5">return (n) =&gt;</tspan>
+            </text>
+                
+            </g>
+                <g>
+                   <rect x="198" y="274" width="170.4" height="30" rx="3" ry="3" style="fill:#90caf9; stroke:#444; stroke-width:1"></rect>
+                   <title>let notBase = true</title>
+            <text x="213" y="294" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="213" y="294">let notBase = true</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="198" y="322.5" width="388.8" height="30" rx="2" ry="2" style="fill:#C5E1A5; stroke:#444; stroke-width:1"></rect>
+                   <title>console.log(getInput, '1 before', to_currency)</title>
+            <text x="213" y="342.5" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="213" y="342.5">console.log(getInput, '1 before', to_currency)</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="198" y="371" width="443.4" height="30" rx="3" ry="3" style="fill:#90caf9; stroke:#444; stroke-width:1"></rect>
+                   <title>getInput = getInput / getRates[select] * getRates[to_currency]</title>
+            <text x="213" y="391" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="213" y="391">getInput = getInput / getRates[select] * getRates[...</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="198" y="419.5" width="334.2" height="30" rx="2" ry="2" style="fill:#C5E1A5; stroke:#444; stroke-width:1"></rect>
+                   <title>console.log(getInput, '1', to_currency)</title>
+            <text x="213" y="439.5" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="213" y="439.5">console.log(getInput, '1', to_currency)</tspan>
+            </text>
+                   
+                   
+                </g><g>
+            <rect x="228" y="483" width="130.2" height="30" rx="3" ry="3" style="fill:#ce93d8; stroke:#444; stroke-width:1"></rect>                
+            <polygon points="198,498 228,468 258,498 228,528" style="fill:#ce93d8; stroke:#444; stroke-width:1"></polygon>
+            <title>(n === 0)</title>
+            <text x="273" y="503" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="273" y="503">(n === 0)</tspan>
+            </text>
+            
+            <text x="220.2" y="503" font-family="monospace" font-size="13" fill="#222">if</text> <text x="235.8" y="529.95" font-family="monospace" font-size="13" fill="#222">+</text> 
+        </g>
+                <g>
+                   <rect x="248" y="538" width="232.79999999999998" height="30" rx="3" ry="3" style="fill:#90caf9; stroke:#444; stroke-width:1"></rect>
+                   <title>getInput = getInput * 1.02</title>
+            <text x="263" y="558" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="263" y="558">getInput = getInput * 1.02</tspan>
+            </text>
+                   
+                   
+                </g><g>
+            <rect x="228" y="603" width="130.2" height="30" rx="3" ry="3" style="fill:#ce93d8; stroke:#444; stroke-width:1"></rect>                
+            <polygon points="198,618 228,588 258,618 228,648" style="fill:#ce93d8; stroke:#444; stroke-width:1"></polygon>
+            <title>(n === 1)</title>
+            <text x="273" y="623" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="273" y="623">(n === 1)</tspan>
+            </text>
+            
+            <text x="220.2" y="623" font-family="monospace" font-size="13" fill="#222">if</text> <text x="235.8" y="649.95" font-family="monospace" font-size="13" fill="#222">+</text> 
+        </g>
+                <g>
+                   <rect x="248" y="658" width="232.79999999999998" height="30" rx="3" ry="3" style="fill:#90caf9; stroke:#444; stroke-width:1"></rect>
+                   <title>getInput = getInput * 0.98</title>
+            <text x="263" y="678" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="263" y="678">getInput = getInput * 0.98</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="248" y="706.5" width="357.59999999999997" height="30" rx="2" ry="2" style="fill:#C5E1A5; stroke:#444; stroke-width:1"></rect>
+                   <title>console.log(getRates, select, to_currency)</title>
+            <text x="263" y="726.5" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="263" y="726.5">console.log(getRates, select, to_currency)</tspan>
+            </text>
+                   
+                   
+                </g><g>
+            <rect x="228" y="771.5" width="192.6" height="30" rx="3" ry="3" style="fill:#ce93d8; stroke:#444; stroke-width:1"></rect>                
+            <polygon points="198,786.5 228,756.5 258,786.5 228,816.5" style="fill:#ce93d8; stroke:#444; stroke-width:1"></polygon>
+            <title>(n === undefined)</title>
+            <text x="273" y="791.5" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="273" y="791.5">(n === undefined)</tspan>
+            </text>
+            
+            <text x="220.2" y="791.5" font-family="monospace" font-size="13" fill="#222">if</text> <text x="235.8" y="818.45" font-family="monospace" font-size="13" fill="#222">+</text> 
+        </g>
+            <g>
+                <rect x="198" y="836.5" width="147" height="30" rx="3" ry="3" style="fill:#90caf9; stroke:#444; stroke-width:1"></rect>
+                
+                <line x1="345" y1="846.5" x2="350" y2="846.5" style="fill:#a5d6a7; stroke:#444; stroke-width:1"></line>
+                
+                <line x1="345" y1="856.5" x2="350" y2="856.5" style="fill:#a5d6a7; stroke:#444; stroke-width:1"></line>
+
+                <path d="M350, 840.5 L366, 851.5 L350, 862.5 Z" fill="#a5d6a7" stroke="#444" stroke-width="1"></path>
+                             
+                <title>return getInput</title>
+            <text x="213" y="856.5" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="213" y="856.5">return getInput</tspan>
+            </text>
+                
+            </g>
+            <g>
+               <rect x="25" y="13.75" width="216.6" height="24" style="fill:#fff59d; stroke:#444; stroke-width:1"></rect>
+               <circle cx="25" cy="25" r="15" style="fill:#fff59d; stroke:#444; stroke-width:1"></circle>
+               <title>Program: source module</title>
+            <text x="55" y="30" font-family="monospace" font-size="13" fill="#222">
+                <tspan x="55" y="30">Program: source module</tspan>
+            </text>
+            </g>
+            <g>
+               <path d="M25, 40 L25 91 Q25 95
+                29 95
+                L42 95 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M42, 92 L50, 95 L42, 98 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M68.5, 110 L68.5 139.5 Q68.5 143.5
+                72.5 143.5
+                L79 143.5 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M79, 140.5 L87, 143.5 L79, 146.5 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M105.5, 158.5 L105.5 188 Q105.5 192
+                109.5 192
+                L116 192 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M116, 189 L124, 192 L116, 195 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M142.5, 207 L142.5 236.5 Q142.5 240.5
+                146.5 240.5
+                L153 240.5 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M153, 237.5 L161, 240.5 L153, 243.5 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M179.5, 255.5 L179.5 285 Q179.5 289
+                183.5 289
+                L190 289 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M190, 286 L198, 289 L190, 292 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M179.5, 255.5 L179.5 333.5 Q179.5 337.5
+                183.5 337.5
+                L190 337.5 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M190, 334.5 L198, 337.5 L190, 340.5 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M179.5, 255.5 L179.5 382 Q179.5 386
+                183.5 386
+                L190 386 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M190, 383 L198, 386 L190, 389 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M179.5, 255.5 L179.5 430.5 Q179.5 434.5
+                183.5 434.5
+                L190 434.5 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M190, 431.5 L198, 434.5 L190, 437.5 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M179.5, 255.5 L179.5 494 Q179.5 498
+                183.5 498
+                L190 498 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M190, 495 L198, 498 L190, 501 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M228, 528 L228 549 Q228 553
+                232 553
+                L240 553 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M240, 550 L248, 553 L240, 556 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M179.5, 255.5 L179.5 614 Q179.5 618
+                183.5 618
+                L190 618 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M190, 615 L198, 618 L190, 621 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M228, 648 L228 669 Q228 673
+                232 673
+                L240 673 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M240, 670 L248, 673 L240, 676 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M228, 648 L228 717.5 Q228 721.5
+                232 721.5
+                L240 721.5 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M240, 718.5 L248, 721.5 L240, 724.5 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M179.5, 255.5 L179.5 782.5 Q179.5 786.5
+                183.5 786.5
+                L190 786.5 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M190, 783.5 L198, 786.5 L190, 789.5 Z" fill="#333"></path>
+            </g>
+            <g>
+               <path d="M179.5, 255.5 L179.5 847.5 Q179.5 851.5
+                183.5 851.5
+                L190 851.5 " style="fill:none; stroke:#444; stroke-width:1"></path>
+               <path d="M190, 848.5 L198, 851.5 L190, 854.5 Z" fill="#333"></path>
+            </g>
+            </svg>
