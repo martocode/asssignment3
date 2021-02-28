@@ -2,22 +2,10 @@ import "./App.css";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-import {
-	Row,
-	Col,
-	Table,
-	Space,
-	Card,
-	Typography,
-	Select,
-	Input,
-	InputNumber,
-} from "antd";
+import { Row, Col, Table, Space, Card, Typography, Select, Input } from "antd";
 import "antd/dist/antd.css";
 import { convert, currFormat } from "./Libs/Currency";
 const { Option } = Select;
-
-const round = (amount) => Number(amount.toFixed(5));
 
 const columns = [
 	{
@@ -67,24 +55,20 @@ const columns = [
 ];
 
 const App = () => {
-	/**
-	 * States
-	 */
+	//States
+
 	const tableRef = useRef();
 	const [getData, setData] = useState([]);
 	const [getRates, setRates] = useState([]);
 	const [getInput, setInput] = useState();
-	const [load, setload] = useState();
-	const [getOpt, setOpt] = useState([]);
 	const [getBase, setBase] = useState([]);
 	const [getSelect, setSelect] = useState();
+	const [getRateText, setRateText] = useState();
 
-	/**
-	 * vars
-	 */
+	// vars
+
 	const currencies = ["CAD", "IDR", "JPY", "CHF", "EUR", "USD"];
 	const selected = getSelect || "IDR";
-	const formatter = currFormat(selected);
 	const child = (curr) => currencies.indexOf(curr);
 
 	const selectBefore = (
@@ -108,43 +92,25 @@ const App = () => {
 
 	const changeSource = (currGenerator) => {
 		return currencies.map((v, k) => {
-			let converted = currGenerator(v, getInput);
-			// console.log(converted);
+			let converter = currGenerator(v, getInput);
 			return {
 				key: k + 1,
 				foreign: v,
-				buy: converted(0),
-				rate: converted(),
-				sell: converted(1),
+				buy: converter("buy"),
+				rate: converter(),
+				sell: converter("sell"),
 			};
 		});
 	};
 
 	const onChangeInput = (e) => {
-		const num = Number(e.target.value);
-		// console.log(formatter);
-		// setInput(formatter(num));
+		const num = e.target.value === "-" ? 0 : Number(e.target.value);
 		setInput(num);
 	};
 
 	const changeNum = (select) => {
 		const currGenerator = convert(getRates, getBase, select);
-
-		// console.log(getInput, "getInput");
-
-		// console.log(maps, "maps");
 		return changeSource(currGenerator);
-	};
-
-	const onChangeValue = () => {
-		const currGenerator = convert(
-			getRates,
-			getBase,
-			selected
-		)(selected, getInput);
-		// console.log(convert(getRates, getBase, selected), "cccc");
-
-		return currGenerator();
 	};
 
 	const renderData = async () => {
@@ -154,8 +120,9 @@ const App = () => {
 		setRates(result?.data.rates);
 		setBase(result?.data.base);
 		setData(changeNum(selected));
-		setload(true);
 	};
+
+	const rateToLabel = () => getRates[selected] || "";
 
 	useEffect(() => {
 		renderData();
@@ -163,9 +130,9 @@ const App = () => {
 
 	useEffect(() => {
 		setData(changeNum(selected));
+		setRateText(rateToLabel());
 	}, [getInput, getSelect]);
 
-	// if (getData) {
 	return (
 		<Row>
 			<Col lg={{ span: 12, offset: 2 }}>
@@ -180,31 +147,12 @@ const App = () => {
 								className="input"
 								addonBefore={selectBefore}
 								type="number"
+								min="0"
 								onChange={onChangeInput}
 							/>
 							<Typography.Text className="value">
-								Hahaha
-								{(() => {
-									const curr = convert(
-										getRates,
-										getBase,
-										selected
-									)(selected, getInput);
-									console.log(
-										selected,
-										"selected",
-										curr(),
-										"curr(selected, getInput)"
-									);
-									return getRates[selected] || "";
-								})()}
+								{getRateText}
 							</Typography.Text>
-							{/* <h1 className="value">
-								{(() => {
-									onChangeValue();
-									console.log(onChangeValue(), "acc");
-								})()}
-							</h1> */}
 						</Input.Group>
 						<Table
 							pagination={false}
