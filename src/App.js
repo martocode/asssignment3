@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { Row, Col, Table, Space, Card, Typography, Select, Input } from "antd";
 import "antd/dist/antd.css";
-import { convert, currFormat } from "./Libs/Currency";
+import { convert, currFormat, logic } from "./Libs/Currency";
 const { Option } = Select;
 
 const columns = [
@@ -93,12 +93,15 @@ const App = () => {
 	const changeSource = (currGenerator) => {
 		return currencies.map((v, k) => {
 			let converter = currGenerator(v, getInput);
+			const formatter = currFormat(v);
+			const [buy, normal, sell] = [logic("buy"), logic(), logic("sell")];
+
 			return {
 				key: k + 1,
 				foreign: v,
-				buy: converter("buy"),
-				rate: converter(),
-				sell: converter("sell"),
+				buy: formatter(buy(converter)),
+				rate: formatter(normal(converter)),
+				sell: formatter(sell(converter)),
 			};
 		});
 	};
@@ -122,7 +125,7 @@ const App = () => {
 		setData(changeNum(selected));
 	};
 
-	const rateToLabel = () => getRates[selected] || "";
+	const rateToLabel = () => getRates[selected] || 1 / getRates["IDR"];
 
 	useEffect(() => {
 		renderData();
