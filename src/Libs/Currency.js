@@ -8,7 +8,7 @@ export const convert = (getRates, base, select) => (to_currency, getInput) => {
 		return getInput;
 	}
 	if (to_currency !== base) {
-		getInput = getRates[select] / getRates[to_currency];
+		getInput *= getRates[to_currency] / getRates[select];
 		return getInput;
 	} else {
 		getInput /= getRates[select];
